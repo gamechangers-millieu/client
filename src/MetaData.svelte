@@ -38,7 +38,7 @@
     } else if ($globalSettings.title) {
       title = $globalSettings.title
     } else {
-      title = "The Shape of a Practice"
+      title = "GameChangers"
     }
   }
 

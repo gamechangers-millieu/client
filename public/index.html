@@ -1,161 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="theme-color" content="#000000" />
 
-    <title>Millieu.org</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="theme-color" content="#000000" />
 
-    <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>GameChangers</title>
 
-    <link rel="stylesheet" href="/build/bundle.css" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="/build/bundle.css" />
 
-   <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
 
-  <link 
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" 
-    rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
 
-    <meta property="og:title" content="Millieu.org">
-    <meta property="twitter:title" content="Millieu.org">
-    <meta property="description" content="Millieu is a general use software project that enables you to turn a conference, group chats and whole digital communities into a spatial in-browser world.">
-    <meta property="og:description" content="Millieu is a general use software project that enables you to turn a conference, group chats and whole digital communities into a spatial in-browser world.">
-    <meta property="twitter:description" content="Millieu is a general use software project that enables you to turn a conference, group chats and whole digital communities into a spatial in-browser world.">
-    <meta property="image" content="">
-    <meta property="og:image" content="">
-    <meta property="twitter:image" content="">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://millieu.org/">
-    <meta property="og:url" content="https://millieu.org/>
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Millieu.org">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet" />
 
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/6.4.0/adapter.min.js"
-    ></script>
-    <script type="text/javascript" src="/janus.js"></script>
+  <meta property="og:title" content="GameChangers">
+  <meta property="twitter:title" content="GameChangers">
+  <meta property="description"
+    content="Millieu is a general use software project that enables you to turn a conference, group chats and whole digital communities into a spatial in-browser world.">
+  <meta property="og:description"
+    content="Millieu is a general use software project that enables you to turn a conference, group chats and whole digital communities into a spatial in-browser world.">
+  <meta property="twitter:description"
+    content="Millieu is a general use software project that enables you to turn a conference, group chats and whole digital communities into a spatial in-browser world.">
+  <meta property="image" content="">
+  <meta property="og:image" content="">
+  <meta property="twitter:image" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://GameChangers/">
+  <meta property="og:url" content="https://GameChangers/>
+    <meta property=" og:type" content="website">
+  <meta property="og:site_name" content="GameChangers">
 
-    <script defer src="/build/bundle.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/6.4.0/adapter.min.js"></script>
+  <script type="text/javascript" src="/janus.js"></script>
 
-    <style>
-      html,
-      body {
-        background: black;
-      }
+  <script defer src="/build/bundle.js"></script>
 
-      * {
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-tap-highlight-color: rgba(197, 197, 197, 0.3);
-      }
+  <style>
+    html,
+    body {
+      background: black;
+    }
 
-      *::-moz-selection {
-        /* Code for Firefox */
-        background: rgb(153, 153, 153);
-      }
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-tap-highlight-color: rgba(197, 197, 197, 0.3);
+    }
 
-      *::selection {
-        background: rgb(153, 153, 153);
-      }
+    *::-moz-selection {
+      /* Code for Firefox */
+      background: rgb(153, 153, 153);
+    }
 
-      body {
-        overscroll-behavior: none;
-      }
+    *::selection {
+      background: rgb(153, 153, 153);
+    }
 
-      .chat-message .body a {
-        color: #f0f0f0;
-      }
+    body {
+      overscroll-behavior: none;
+    }
 
-      .thread-container img {
-        width: 20px;
-      }
+    .chat-message .body a {
+      color: #f0f0f0;
+    }
 
-      a {
-        color: black;
-      }
-      
-      p{
-        margin: 0 0 1em 0;
-      }
+    .thread-container img {
+      width: 20px;
+    }
 
-      .text ul{
-        padding-left: 12px;
-        margin-top: 0;
-      }
+    a {
+      color: black;
+    }
 
-      figure {
-        width: 100%;
-        margin: 0;
-      }
+    p {
+      margin: 0 0 1em 0;
+    }
 
-      figure img,
-      video,
-      audio {
-        width: 100%;
-        margin-bottom: 12px;
-      }
+    .text ul {
+      padding-left: 12px;
+      margin-top: 0;
+    }
 
-      figcaption{
-        margin-bottom: 12px;
-      }
+    figure {
+      width: 100%;
+      margin: 0;
+    }
 
-      input[type="[text]"]{
-        -webkit-appearance: none;
-      }
+    figure img,
+    video,
+    audio {
+      width: 100%;
+      margin-bottom: 12px;
+    }
 
-      .flickity-slider{
-        /* transition: transform 0.3s ease-out, left 0.3s ease-out; */
-        /* will-change: transform, left; */
-      }
+    figcaption {
+      margin-bottom: 12px;
+    }
 
-      .embed-container {
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        overflow: hidden;
-        max-width: 720px;
-        width: 100%;
-        margin-bottom: 1em;
-      }
+    input[type="[text]"] {
+      -webkit-appearance: none;
+    }
 
-      .embed-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
+    .flickity-slider {
+      /* transition: transform 0.3s ease-out, left 0.3s ease-out; */
+      /* will-change: transform, left; */
+    }
 
-      .soundcloud-container {
-        width: 100%;
-        overflow: hidden;
-        max-width: 100%;
-        margin-bottom: 1em;
-      }
+    .embed-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 720px;
+      width: 100%;
+      margin-bottom: 1em;
+    }
 
-      .soundcloud-container iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
 
-      .pinned-message a {
-        color: white;
-      }
-      .pinned-message p {
-        margin-bottom: 0;
-      }
-    </style>
-  </head>
+    .soundcloud-container {
+      width: 100%;
+      overflow: hidden;
+      max-width: 100%;
+      margin-bottom: 1em;
+    }
 
-  <body></body>
+    .soundcloud-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .pinned-message a {
+      color: white;
+    }
+
+    .pinned-message p {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+
+<body></body>
 
 </html>
