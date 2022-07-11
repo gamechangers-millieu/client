@@ -97,5 +97,5 @@
   <meta name="twitter:url" content={url} />
   <meta property="og:url" content={url} />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="postrational.foundation" />
+  <meta property="og:site_name" content="gamechangers" />
 </svelte:head>

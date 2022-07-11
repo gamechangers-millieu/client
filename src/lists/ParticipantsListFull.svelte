@@ -1,126 +1,40 @@
 <script>
   // # # # # # # # # # # # # #
   //
-  //  Case Study List
+  //  Participants List Full
   //
   // # # # # # # # # # # # # #
 
   // *** IMPORTS
   import get from "lodash/get"
-  import Fuse from "fuse.js"
   import { renderBlockText } from "../sanity.js"
 
-  // COMPONENTS
-  import ParticipantsList from "./ParticipantsList.svelte"
-
   // *** PROPS
-  export let caseStudies = []
-  export let related = false
+  export let participants = {}
 
   // *** STORES
   import { globalSettings } from "../stores.js"
-
-  // *** VARIABLES
-  let filterTerm = ""
-  let filteredCaseStudies = []
-  let orderedCaseStudies = {}
-  let fuseList = {}
-  let sortOrder = "title"
-
-  const fuseOptions = {
-    threshold: 0.2,
-    keys: ["title", "category", "participants.name"],
-  }
-
-  const titleSort = (a, b) => {
-    const textA = a.title ? a.title.toUpperCase() : "Undefined"
-    const textB = b.title ? b.title.toUpperCase() : "Undefined"
-    return textA < textB ? -1 : textA > textB ? 1 : 0
-  }
-
-  const seminarSort = (a, b) => {
-    const textA = a.category ? a.category.toUpperCase() : "Undefined"
-    const textB = b.category ? b.category.toUpperCase() : "Undefined"
-    return textA < textB ? -1 : textA > textB ? 1 : 0
-  }
-
-  orderedCaseStudies["title"] = [...caseStudies].sort(titleSort)
-  orderedCaseStudies["seminar"] = [...caseStudies].sort(seminarSort)
-
-  fuseList["title"] = new Fuse(orderedCaseStudies["title"], fuseOptions)
-  fuseList["seminar"] = new Fuse(orderedCaseStudies["seminar"], fuseOptions)
-
-  // FILTER
-  $: {
-    if (filterTerm) {
-      filteredCaseStudies = fuseList[sortOrder]
-        .search(filterTerm)
-        .map(hit => hit.item)
-    } else {
-      filteredCaseStudies = orderedCaseStudies[sortOrder]
-    }
-  }
 </script>
 
 <div class="case-study-container">
   <!-- HEADER -->
-  <div class="case-study-item header" class:related>
+  <div class="case-study-item header">
     <div class="inner">
       <div class="row">
-        <div>{related ? "Connected Resources" : "Resources"}</div>
+        <div>People</div>
       </div>
     </div>
   </div>
 
-  {#if !related}
-    <!-- TEXT -->
-    {#if Array.isArray(get($globalSettings, "caseStudyOverview.content", false))}
-      <div class="description">
-        {@html renderBlockText($globalSettings.caseStudyOverview.content)}
-      </div>
-    {/if}
-    <!-- TOOLBAR -->
-    <div class="toolbar">
-      <div class="sort">
-        <div>Sort by:</div>
-        <select name="sortOrder" bind:value={sortOrder}>
-          <option value="title" selected>Title</option>
-          <option value="seminar">Type</option>
-        </select>
-      </div>
-      <div class="filter">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
-          ><path d="M0 0h24v24H0z" fill="none" />
-          <path
-            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-          /></svg
-        ><input type="[text]" placeholder="Search" bind:value={filterTerm} />
-      </div>
-    </div>
-  {/if}
-  <!-- CASE STUDIES -->
-  {#each related ? caseStudies : filteredCaseStudies as caseStudy, index (caseStudy._id)}
+  <!-- PEOPLE -->
+  {#each participants as user, index (user._id)}
     <a
       class="case-study-item"
-      class:related
-      href={"/resources/" + get(caseStudy, "slug.current", "")}
+      href={"/people/" + get(user, "slug.current", "")}
     >
       <div class="inner">
-        <div class="color-icon {caseStudy.category}" />
         <div class="mid-section">
-          <div class="title">{caseStudy.title}</div>
-          <div class="participants">
-            {#if get(caseStudy, "participants", false) && Array.isArray(caseStudy.participants)}
-              <ParticipantsList participants={caseStudy.participants} />
-            {/if}
-          </div>
-        </div>
-        <div class="date">
-          {#if caseStudy.category}{caseStudy.category}{/if}
+          <div class="title">{user.name}</div>
         </div>
       </div>
     </a>
