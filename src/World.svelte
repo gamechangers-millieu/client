@@ -490,6 +490,12 @@
         const createPlayer = (playerOptions, sessionId) => {
           // __ Create sprites for all motion states
           const sprites = ["rest", "front", "back", "left", "right"].map(ms => {
+            console.log("avatarSpritesheets", avatarSpritesheets)
+            console.log(
+              "avatarSpritesheets[playerOptions.avatar]",
+              avatarSpritesheets[playerOptions.avatar]
+            )
+
             const sprite = new PIXI.AnimatedSprite(
               avatarSpritesheets[playerOptions.avatar].animations[ms]
             )
@@ -1072,7 +1078,7 @@
               caseStudyLocation.interactive = true
 
               const onDown = e => {
-                navigate("/projects/" + get(cs, "slug.current", false))
+                navigate("/resources/" + get(cs, "slug.current", false))
                 e.stopPropagation()
               }
 
