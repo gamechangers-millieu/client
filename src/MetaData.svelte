@@ -38,7 +38,7 @@
     } else if ($globalSettings.title) {
       title = $globalSettings.title
     } else {
-      title = "GameChangers"
+      title = "GameChanger"
     }
   }
 
@@ -97,5 +97,5 @@
   <meta name="twitter:url" content={url} />
   <meta property="og:url" content={url} />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="gamechangers" />
+  <meta property="og:site_name" content="gamechanger" />
 </svelte:head>
