@@ -438,10 +438,12 @@
 
   const initializeGameWorld = () => {
     // __ Load assets
+    console.log("loading game world")
     graphicsSettings.then(graphicsSettings => {
       // __ Load map
       const mapAsset = get(graphicsSettings, "mapLink.mainImage.asset", false)
       if (mapAsset) {
+        console.log("mapAsset", mapAsset)
         // __ Get minimap URL
         miniImage = urlFor(graphicsSettings.mapLink.miniImage.asset)
           .width(400)
@@ -466,6 +468,7 @@
 
       // __ Load avatars
       const activeAvatars = get(graphicsSettings, "activeAvatars", false)
+      console.log("activeAvatars", activeAvatars)
       const avatarLoader = new PIXI.Loader()
       if (activeAvatars && activeAvatars.length > 0) {
         activeAvatars.forEach((avatar, index) => {
@@ -480,14 +483,18 @@
       }
 
       avatarLoader.load((loader, resources) => {
+        console.log("resources", resources)
         for (let key of Object.keys(resources)) {
           if (resources[key].extension === "json") {
             avatarSpritesheets[key] = resources[key].spritesheet
           }
         }
 
+        console.log("avatarSpritesheets", avatarSpritesheets)
+
         // __ Create player
         const createPlayer = (playerOptions, sessionId) => {
+          console.log("createPlayer", createPlayer)
           // __ Create sprites for all motion states
           const sprites = ["rest", "front", "back", "left", "right"].map(ms => {
             console.log("avatarSpritesheets", avatarSpritesheets)
@@ -654,9 +661,11 @@
         // }
 
         // __ Join game room
+        console.log("connecting to game world", playerObject)
         gameClient
           .joinOrCreate("game", playerObject)
           .then(gameRoom => {
+            console.log("gameRoom", gameRoom)
             // ******
             // PLAYER
             // ******
@@ -683,6 +692,7 @@
 
             // PLAYER => ADD
             gameRoom.state.players.onAdd = (player, sessionId) => {
+              console.log("userAdd", player)
               localPlayers[sessionId] = createPlayer(player, sessionId)
               // cull.add(localPlayers[sessionId].avatar);
               // console.dir(cull)

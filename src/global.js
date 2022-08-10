@@ -1,7 +1,9 @@
 import { format, getYear } from "date-fns"
 
 export const SANITY_PROJECT_ID = "i6bqtajk"
-export const GAME_SERVER_URL = "wss://server.gc-millieu.com";
+// export const GAME_SERVER_URL = "wss://server.gc-millieu.com";
+export const GAME_SERVER_URL = "wss://t8gchl.colyseus.in"
+// export const GAME_SERVER_URL = "ws://localhost:2567"
 
 export const VIDEO_ROOMS = { MAIN: "main", SUPPORT: "support" }
 export const AUDIO_ROOMS = [1, 2, 3, 4, 5, 6, 7]
