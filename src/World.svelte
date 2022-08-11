@@ -1975,7 +1975,7 @@
     position: absolute;
     top: 0;
     right: calc(#{$SIDEBAR_WIDTH} + #{$SPACE_S});
-    width: 500px;
+    width: 800px;
     max-width: calc(100vw - (#{$SIDEBAR_WIDTH} + #{$SPACE_L}));
     max-height: 100vh;
     z-index: 100;
