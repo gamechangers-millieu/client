@@ -1261,8 +1261,8 @@
       // ___ Set username from cookie
       localUserName.set(usernameCookie)
       // ___ Show welcome card if user has not visited in last 7 days
-      // showWelcomeCard = Cookies.get("gamechangers-visitor") ? false : true;
-      showWelcomeCard = false
+      showWelcomeCard = Cookies.get("gamechangers-visitor") ? false : true;
+      // showWelcomeCard = false
       Cookies.set("gamechangers-visitor", "true", { expires: 7 })
       // __ Start the game...
       initializeGameWorld()
