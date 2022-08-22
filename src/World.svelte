@@ -24,6 +24,9 @@
   // *** COMPONENTS
   // sidebar
   import Chat from "./sidebar/Chat.svelte"
+
+  import TelegramChat from "./sidebar/TelegramChat.svelte"
+
   import MiniMap from "./sidebar/MiniMap.svelte"
   import Menu from "./sidebar/Menu.svelte"
   import ToolBar from "./sidebar/ToolBar.svelte"
@@ -1336,7 +1339,7 @@
             <!-- <Messaging {slug} />
             {:else} -->
             <!-- CHAT -->
-            {#each TEXT_ROOMS as TR}
+            <!-- {#each TEXT_ROOMS as TR}
               {#if $currentTextRoom === TR}
                 <Chat
                   chatMessages={chatMessages.filter(
@@ -1345,10 +1348,11 @@
                   currentRoom={TR}
                 />
               {/if}
-            {/each}
+            {/each} -->
+            <TelegramChat post="gamechangers_123456789_test/3" />
             <!-- {/if} -->
             <!-- TOOLBAR-->
-            <div class="toolbar">
+            <!-- <div class="toolbar">
               <ToolBar
                 {section}
                 on:submit={submitChat}
@@ -1359,7 +1363,7 @@
                   teleportTo($currentArea === 5 ? "green" : "blue")
                 }}
               />
-            </div>
+            </div> -->
           </div>
         </div>
         <!-- MENUBAR -->
