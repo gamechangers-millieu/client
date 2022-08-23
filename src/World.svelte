@@ -1956,7 +1956,7 @@
 
       .bottom-area {
         background: $COLOR_DARK;
-        height: calc(50% - 50px);
+        height: 50%;
         @include hide-scroll;
       }
 
