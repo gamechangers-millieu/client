@@ -1318,7 +1318,7 @@
           <a href="http://pohflepp.de/" target="_blank">to Sascha's website</a>
         </div> -->
         <div class="minimap">
-          <MiniMap {miniImage} player={localPlayers[$localUserSessionID]} />
+          <MiniMap {miniImage} players={localPlayers} />
         </div>
         <div class="middle-section">
           <div class="top-area">
