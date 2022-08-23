@@ -1066,7 +1066,9 @@
               const frames = new PIXI.AnimatedSprite(
                 resources[spriteId].spritesheet.animations["frames"]
               )
-              frames.animationSpeed = 0.02
+              frames.animationSpeed = 0.03
+              frames.scale.x = 0.5
+              frames.scale.y = 0.5
               frames.play()
 
               // __ Name graphics (shown on hover)
@@ -1087,6 +1089,7 @@
               caseStudyLocation.y = cs.y
               caseStudyLocation.pivot.x = caseStudyLocation.width / 2
               caseStudyLocation.pivot.y = caseStudyLocation.height / 2
+
               caseStudyLocation.title = cs.title
               caseStudyLocation.interactive = true
 
@@ -1264,7 +1267,7 @@
       // ___ Set username from cookie
       localUserName.set(usernameCookie)
       // ___ Show welcome card if user has not visited in last 7 days
-      showWelcomeCard = Cookies.get("gamechangers-visitor") ? false : true;
+      showWelcomeCard = Cookies.get("gamechangers-visitor") ? false : true
       // showWelcomeCard = false
       Cookies.set("gamechangers-visitor", "true", { expires: 7 })
       // __ Start the game...
