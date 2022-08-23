@@ -1,6 +1,6 @@
 <!-- https://stackoverflow.com/questions/59629947/how-do-i-load-an-external-js-library-in-svelte-sapper -->
 <!-- https://core.telegram.org/widgets/discussion -->
-<div>
+<div class="telegram-chat-container">
   <script async 
   bind:this={script}
   src="{url}" 
@@ -34,3 +34,15 @@
     });
   });
 </script>
+
+<style lang="scss">
+  .telegram-chat-container{
+    height: 100%;
+    // background-color: green;
+  }
+
+  :global(iframe) {
+    height: 100% !important;
+    // border: 1px solid red !important;
+  }
+</style>
