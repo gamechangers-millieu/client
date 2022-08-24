@@ -8,18 +8,25 @@
   import { onMount, createEventDispatcher } from "svelte"
   import { fade } from "svelte/transition"
   import { quartOut } from "svelte/easing"
+  import sample from "lodash/sample.js"
 
   // *** STORES
   import { localUserName } from "../stores.js"
+  import { urlFor } from "../sanity.js"
 
   // *** CONSTANTS
   const dispatch = createEventDispatcher()
 
   // *** VARIABLES
   let username = $localUserName ? $localUserName : ""
+  let stepTwo = false
 
   // *** DOM REFERENCES
   let inputEl = {}
+
+  // *** AVATARS
+  export let avatars = []
+  let selectedAvatar = sample(avatars)._id
 
   onMount(async () => {
     if (inputEl) {
@@ -27,6 +34,57 @@
     }
   })
 </script>
+
+{#if stepTwo}
+  <div
+    class="username-dialog"
+    transition:fade={{ duration: 400, easing: quartOut }}
+  >
+    <div class="box avatar-picker">
+      <div class="header">Select your avatar</div>
+      <div class="inner">
+        {#each avatars as avatar, i}
+          <div
+            class="avatar"
+            class:selected={selectedAvatar == avatar._id}
+            on:click={() => {
+              selectedAvatar = avatar._id
+            }}
+          >
+            <img src={urlFor(avatar.front[0].asset).url()} />
+          </div>
+        {/each}
+      </div>
+      <button
+        on:click={e => {
+          dispatch("username", { username: username, avatar: selectedAvatar })
+        }}>Enter</button
+      >
+    </div>
+  </div>
+{:else}
+  <div
+    class="username-dialog"
+    transition:fade={{ duration: 400, easing: quartOut }}
+  >
+    <div class="box">
+      <input
+        type="text"
+        bind:this={inputEl}
+        bind:value={username}
+        placeholder="Choose your username"
+        on:keydown={e => {
+          if (e.key == "Enter") stepTwo = true
+        }}
+      />
+      <button
+        on:click={e => {
+          stepTwo = true
+        }}>Enter</button
+      >
+    </div>
+  </div>
+{/if}
 
 <style lang="scss">
   @import "../variables.scss";
@@ -81,7 +139,7 @@
           border: 1px solid $COLOR_LIGHT;
         }
 
-        &::placeholder{
+        &::placeholder {
           opacity: 0.7;
         }
 
@@ -97,62 +155,67 @@
         }
       }
 
-      div {
-        font-family: $MONO_STACK;
-        font-size: $FONT_SIZE_MEDIUM;
-        float: right;
-        display: block;
-        width: 100px;
-        background: transparent;
-        color: $COLOR_DARK;
-        border-radius: $border_radius;
-        outline: none;
-        cursor: pointer;
-        height: 30px;
-        line-height: 20px;
-        margin-right: $SPACE_S;
-      }
+      &.avatar-picker {
+        flex-direction: column;
+        align-items: center;
 
-      button {
-        font-family: $MONO_STACK;
-        font-size: 90%;
-        text-transform: uppercase;
-        float: right;
-        display: block;
-        width: 100px;
-        background: transparent;
-        border: 1px solid $COLOR_DARK;
-        color: $COLOR_DARK;
-        border-radius: $border_radius;
-        outline: none;
-        cursor: pointer;
-        height: 30px;
-        line-height: 20px;
+        .header {
+          font-family: $MONO_STACK;
+          color: $COLOR_DARK;
+          font-size: $FONT_SIZE_MEDIUM;
+        }
 
-        &:hover {
-          // color: $COLOR_LIGHT;
-          border: 1px solid $COLOR_LIGHT;
+        .inner {
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: 20px;
+          margin-bottom: 20px;
+
+          .avatar {
+            cursor: pointer;
+            padding: 5px;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            width: 60px;
+            height: 60px;
+
+            img {
+              max-width: 100%;
+              max-height: 100%;
+            }
+
+            @include screen-size("small") {
+              padding: 10px;
+            }
+
+            &.selected {
+              border: 2px solid $COLOR_DARK;
+            }
+          }
         }
       }
     }
   }
-</style>
 
-<div
-  class="username-dialog"
-  transition:fade={{ duration: 400, easing: quartOut }}>
-  <div class="box">
-    <input
-      type="text"
-      bind:this={inputEl}
-      bind:value={username}
-      placeholder="Choose your username"
-      on:keydown={e => {
-        if (e.keyCode == 13) dispatch('username', { username: username })
-      }} />
-    <button
-      on:click={e => {
-        dispatch('username', { username: username })
-      }}>Enter</button>
-  </div>
-</div>
+  button {
+    font-family: $MONO_STACK;
+    font-size: 90%;
+    text-transform: uppercase;
+    float: right;
+    display: block;
+    width: 100px;
+    background: transparent;
+    border: 1px solid $COLOR_DARK;
+    color: $COLOR_DARK;
+    border-radius: $border_radius;
+    outline: none;
+    cursor: pointer;
+    height: 30px;
+    line-height: 20px;
+
+    &:hover {
+      border: 1px solid $COLOR_LIGHT;
+      background: $COLOR_MID_1;
+    }
+  }
+</style>
