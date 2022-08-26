@@ -638,7 +638,7 @@
         const avatarCookie = Cookies.get("gamechangers-avatar")
         const userAvatar = avatarCookie
           ? avatarCookie
-          : sample(activeAvatars.filter(a => !a.notRandom))
+          : sample(activeAvatars.filter(a => !a.notRandom))._id
 
         let playerObject = {}
 
@@ -1256,8 +1256,16 @@
     const usernameCookie = Cookies.get("gamechangers-username")
     console.log("usernameCookie", usernameCookie)
     if (!usernameCookie) {
-      // ___ Prompt user to enter name
-      setUIState(STATE.SETUSERNAME)
+      if (section && slug) {
+        // If this is a direct link we skip the user onboarding
+        localUserName.set("Visitor")
+        showWelcomeCard = false
+        // __ Start the game...
+        initializeGameWorld()
+      } else {
+        // ___ Prompt user to enter name
+        setUIState(STATE.SETUSERNAME)
+      }
     } else {
       // ___ Set username from cookie
       localUserName.set(usernameCookie)
