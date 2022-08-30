@@ -1347,7 +1347,7 @@
                 />
               {/if}
             {/each} -->
-            <TelegramChat post="gamechangers_123456789_test/3" />
+            <TelegramChat post="gamechangerland_channel/4" />
             <!-- {/if} -->
             <!-- TOOLBAR-->
             <!-- <div class="toolbar">
