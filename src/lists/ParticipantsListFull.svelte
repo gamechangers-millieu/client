@@ -21,7 +21,7 @@
   <div class="case-study-item header">
     <div class="inner">
       <div class="row">
-        <div>People</div>
+        <div>GameChangers</div>
       </div>
     </div>
   </div>

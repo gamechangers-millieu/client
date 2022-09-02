@@ -13,10 +13,10 @@
 
 <div class="menu-container">
   <div>
-    <a href="/pages/project" class="menu-item">Project</a>
+    <a href="/pages/project" class="menu-item">About</a>
     <a href="/events" class="menu-item">Events</a>
     <a href="/resources" class="menu-item">Resources</a>
-    <a href="/people" class="menu-item">People</a>
+    <a href="/people" class="menu-item">GameChangers</a>
   </div>
 
   <span
