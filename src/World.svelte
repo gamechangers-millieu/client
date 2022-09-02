@@ -1614,7 +1614,9 @@
   {/if}
 </MediaQuery>
 
-<Logo />
+{#if UI.state == STATE.READY}
+  <Logo />
+{/if}
 
 <!-- LOADING -->
 {#if UI.state == STATE.LOADING}
