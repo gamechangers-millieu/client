@@ -1355,7 +1355,7 @@
                 />
               {/if}
             {/each} -->
-            <TelegramChat post="gamechangerland_channel/4" />
+            <TelegramChat post={$globalSettings.telegramChatUrl} />
             <!-- {/if} -->
             <!-- TOOLBAR-->
             <!-- <div class="toolbar">
@@ -1565,28 +1565,9 @@
               mobileExpanded = true
             }
           }}
+          
         >
-          {#if mobileExpanded}
-            <div
-              class="close"
-              on:click={e => {
-                mobileExpanded = false
-                e.stopPropagation()
-                navigate("/")
-              }}
-            >
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M28.9 11.1C28.6 10.8 28.2 10.8 27.9 11.1L20 19L12.1 11.1C11.8 10.8 11.4 10.8 11.1 11.1C10.8 11.4 10.8 11.8 11.1 12.1L19 20L11.1 27.9C10.8 28.2 10.8 28.6 11.1 28.9C11.4 29.2 11.8 29.2 12.1 28.9L20 21L27.9 28.9C28.2 29.2 28.6 29.2 28.9 28.9C29.2 28.6 29.2 28.2 28.9 27.9L21 20L28.9 12.1C29.2 11.8 29.2 11.4 28.9 11.1Z"
-                />
-              </svg>
-            </div>
-          {/if}
+         
           <!-- {#if section == 'seminar'} -->
           <!-- SEMINAR -->
           <!-- <Seminar {slug} mobile={true} {mobileExpanded} /> -->
@@ -1594,8 +1575,9 @@
           <!-- MESSAGES -->
           <!-- <Messaging {slug} mobile={true} {mobileExpanded} />
           {:else} -->
+          <TelegramChat post={$globalSettings.telegramChatUrl} />
           <!-- CHAT -->
-          {#each TEXT_ROOMS as TR}
+          <!-- {#each TEXT_ROOMS as TR}
             {#if $currentTextRoom === TR}
               <Chat
                 chatMessages={chatMessages.filter(
@@ -1606,10 +1588,10 @@
                 {mobileExpanded}
               />
             {/if}
-          {/each}
+          {/each} -->
           <!-- {/if} -->
           <!-- TOOLBAR-->
-          <div class="toolbar">
+          <!-- <div class="toolbar">
             <ToolBar
               {section}
               mobile={true}
@@ -1623,7 +1605,7 @@
                 }
               }}
             />
-          </div>
+          </div> -->
         </div>
       {/if}
       <!-- MOBILE MENU-->
@@ -1995,18 +1977,19 @@
   }
 
   .mobile-toolkit {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.6054796918767507) 0%,
-      rgba(0, 0, 0, 0) 100%
-    );
+    // background: linear-gradient(
+    //   0deg,
+    //   rgba(0, 0, 0, 0.6054796918767507) 0%,
+    //   rgba(0, 0, 0, 0) 100%
+    // );
+    background-color: rgba(0,0,0,0.7);
     position: fixed;
     bottom: 50px;
     left: 0;
     width: 100%;
     height: 25vh;
     z-index: 10;
-    pointer-events: none;
+    // pointer-events: none;
 
     transition: height 250ms $transition;
 
