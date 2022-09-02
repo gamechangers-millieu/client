@@ -1001,34 +1001,34 @@
             // CLIENT LEFT / WAS DISCONNECTED
             // ******************************
             gameRoom.onLeave(code => {
-              const exitMsg = "Disconnected from server. Code: " + code
-              // console.log(exitMsg);
-              // __ Show notification of disconnection
-              setUIState(STATE.DISCONNECTED)
-              disconnectionCode = code
-              reconnectionAttempts = 1
-              // TODO: Try to reconnect
-              const reconnect = i => {
-                console.log(
-                  "Trying to reconnect user:",
-                  $localUserSessionID,
-                  "....",
-                  i
-                )
-                gameClient
-                  .reconnect("game", $localUserSessionID)
-                  .then(room => {
-                    // __ Successfully reconnected
-                    setUIState(STATE.READY)
-                  })
-                  .catch(e => {
-                    console.error("join error", e)
-                  })
-                //   setInterval(() => {
-                //   reconnectionAttempts++
-                // }, 5000)
-              }
-              reconnect(1)
+              // const exitMsg = "Disconnected from server. Code: " + code
+              // // console.log(exitMsg);
+              // // __ Show notification of disconnection
+              // setUIState(STATE.DISCONNECTED)
+              // disconnectionCode = code
+              // reconnectionAttempts = 1
+              // // TODO: Try to reconnect
+              // const reconnect = i => {
+              //   console.log(
+              //     "Trying to reconnect user:",
+              //     $localUserSessionID,
+              //     "....",
+              //     i
+              //   )
+              //   gameClient
+              //     .reconnect("game", $localUserSessionID)
+              //     .then(room => {
+              //       // __ Successfully reconnected
+              //       setUIState(STATE.READY)
+              //     })
+              //     .catch(e => {
+              //       console.error("join error", e)
+              //     })
+              //   //   setInterval(() => {
+              //   //   reconnectionAttempts++
+              //   // }, 5000)
+              // }
+              // reconnect(1)
             })
 
             // ************************
@@ -1565,9 +1565,7 @@
               mobileExpanded = true
             }
           }}
-          
         >
-         
           <!-- {#if section == 'seminar'} -->
           <!-- SEMINAR -->
           <!-- <Seminar {slug} mobile={true} {mobileExpanded} /> -->
@@ -1982,7 +1980,7 @@
     //   rgba(0, 0, 0, 0.6054796918767507) 0%,
     //   rgba(0, 0, 0, 0) 100%
     // );
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     position: fixed;
     bottom: 50px;
     left: 0;
