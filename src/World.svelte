@@ -1546,14 +1546,14 @@
 
     {#if localPlayers[$localUserSessionID]}
       <!-- MOBILE CALENDAR-->
-      <div class="mobile-calendar" use:links>
+      <!-- <div class="mobile-calendar" use:links>
         {#await events then events}
           <EventListSliderMobile {events} />
         {/await}
-      </div>
+      </div> -->
       <!-- MOBILE TOOLKIT -->
       {#if !audioChatActive}
-        <div
+        <!-- <div
           class="mobile-toolkit"
           use:links
           class:expanded={mobileExpanded}
@@ -1565,7 +1565,7 @@
               mobileExpanded = true
             }
           }}
-        >
+        > -->
           <!-- {#if section == 'seminar'} -->
           <!-- SEMINAR -->
           <!-- <Seminar {slug} mobile={true} {mobileExpanded} /> -->
@@ -1573,7 +1573,7 @@
           <!-- MESSAGES -->
           <!-- <Messaging {slug} mobile={true} {mobileExpanded} />
           {:else} -->
-          <TelegramChat post={$globalSettings.telegramChatUrl} />
+          <!-- <TelegramChat post={$globalSettings.telegramChatUrl} /> -->
           <!-- CHAT -->
           <!-- {#each TEXT_ROOMS as TR}
             {#if $currentTextRoom === TR}
@@ -1604,7 +1604,7 @@
               }}
             />
           </div> -->
-        </div>
+        <!-- </div> -->
       {/if}
       <!-- MOBILE MENU-->
       <div class="mobile-menu" use:links>

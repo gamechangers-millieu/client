@@ -44,7 +44,7 @@
     }
 
     @include screen-size("small"){
-      top:80px;
+      top:0px;
       z-index:1;
     }
   }
